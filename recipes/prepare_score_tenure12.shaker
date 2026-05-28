@@ -39,6 +39,14 @@
         "expression": "12",
         "column": "tenure_months"
       }
+    },
+    {
+      "metaType": "PROCESSOR",
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "if(tenure_months \u003c\u003d 2, \"0-2\", if(tenure_months \u003c\u003d 6, \"3-6\", if(tenure_months \u003c\u003d 12, \"7-12\", if(tenure_months \u003c\u003d 24, \"13-24\", if(tenure_months \u003c\u003d 60, \"25-60\", \"60+\")))))",
+        "column": "tenure_bucket"
+      }
     }
   ],
   "maxProcessedMemTableBytes": -1,
