@@ -31,7 +31,16 @@
   "columnOrder": [],
   "columnUseScientificNotationByName": {},
   "exploreUIParams": {},
-  "steps": [],
+  "steps": [
+    {
+      "metaType": "PROCESSOR",
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "12",
+        "column": "tenure_months"
+      }
+    }
+  ],
   "maxProcessedMemTableBytes": -1,
   "previewMode": "ALL_ROWS",
   "vizSampling": {
