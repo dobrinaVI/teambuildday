@@ -16,9 +16,9 @@
   "forceOriginalEngine": false,
   "treatmentRatio": 0.0,
   "individualExplanationParams": {
-    "drawInScoredSet": false,
+    "drawInScoredSet": true,
     "subChunkSize": 5000,
-    "method": "ICE",
+    "method": "SHAPLEY",
     "shapleyBackgroundSize": 100,
     "nbExplanations": 3
   },
@@ -54,6 +54,6 @@
   "outputModelMetadata": false,
   "refitModel": false,
   "batchSize": 100,
-  "outputExplanations": false,
+  "outputExplanations": true,
   "overrideModelSpecifiedThreshold": false
 }
