@@ -47,6 +47,14 @@
         "expression": "datePart(signup_date,\"years\")",
         "column": "signup_year"
       }
+    },
+    {
+      "metaType": "PROCESSOR",
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "datePart(signup_date,\"months\")",
+        "column": "signup_month"
+      }
     }
   ],
   "maxProcessedMemTableBytes": -1,
