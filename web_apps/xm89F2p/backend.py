@@ -39,17 +39,17 @@ def top_k_explanations(expl: dict, k: int = 3):
     return items[:k]
 
 
-with st.sidebar:
-    st.header("Dataset")
-    st.caption("Reads directly from the Flow dataset:")
-    st.code(DEFAULT_DATAIKU_DATASET)
+# with st.sidebar:
+#     st.header("Dataset")
+#     st.caption("Reads directly from the Flow dataset:")
+#     st.code(DEFAULT_DATAIKU_DATASET)
 
 
-@st.cache_data(show_spinner=False)
-def load_dataiku_dataset(name: str) -> pd.DataFrame:
-    if dataiku is None:
-        raise RuntimeError("This app is not running inside Dataiku DSS.")
-    return dataiku.Dataset(name).get_dataframe()
+# @st.cache_data(show_spinner=False)
+# def load_dataiku_dataset(name: str) -> pd.DataFrame:
+#     if dataiku is None:
+#         raise RuntimeError("This app is not running inside Dataiku DSS.")
+#     return dataiku.Dataset(name).get_dataframe()
 
 
 # if dataiku is None:
