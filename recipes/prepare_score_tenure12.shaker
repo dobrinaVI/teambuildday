@@ -47,6 +47,14 @@
         "expression": "if(tenure_months \u003c\u003d 2, \"0-2\", if(tenure_months \u003c\u003d 6, \"3-6\", if(tenure_months \u003c\u003d 12, \"7-12\", if(tenure_months \u003c\u003d 24, \"13-24\", if(tenure_months \u003c\u003d 60, \"25-60\", \"60+\")))))",
         "column": "tenure_bucket"
       }
+    },
+    {
+      "metaType": "PROCESSOR",
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "total_spend_usd / max(1, tenure_months)",
+        "column": "spend_per_tenure_month"
+      }
     }
   ],
   "maxProcessedMemTableBytes": -1,
