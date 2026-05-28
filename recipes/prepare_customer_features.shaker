@@ -143,6 +143,14 @@
         "expression": "if(region\u003d\u003d\"EU\",1,0)",
         "column": "region_eu"
       }
+    },
+    {
+      "metaType": "PROCESSOR",
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "if(region\u003d\u003d\"APAC\",1,0)",
+        "column": "region_apac"
+      }
     }
   ],
   "maxProcessedMemTableBytes": -1,
