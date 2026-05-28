@@ -55,6 +55,14 @@
         "expression": "datePart(signup_date,\"months\")",
         "column": "signup_month"
       }
+    },
+    {
+      "metaType": "PROCESSOR",
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "ln(total_spend_usd + 1)",
+        "column": "log_total_spend_usd"
+      }
     }
   ],
   "maxProcessedMemTableBytes": -1,
