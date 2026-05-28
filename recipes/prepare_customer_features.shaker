@@ -63,6 +63,14 @@
         "expression": "ln(total_spend_usd + 1)",
         "column": "log_total_spend_usd"
       }
+    },
+    {
+      "metaType": "PROCESSOR",
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "total_spend_usd / max(1, tenure_months)",
+        "column": "spend_per_tenure_month"
+      }
     }
   ],
   "maxProcessedMemTableBytes": -1,
