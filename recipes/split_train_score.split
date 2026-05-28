@@ -1,22 +1,45 @@
 {
   "centileShuffle": false,
   "centileSplits": [],
-  "defaultOutputIndex": 1,
   "preFilter": {
     "distinct": false,
     "enabled": false
   },
+  "defaultOutputIndex": 1,
   "seed": 42,
   "randomColumns": [],
   "centileOrders": [],
   "rangeSetTime": false,
+  "column": "customer_id",
   "randomSplits": [],
   "randomColumnsSplits": [],
   "computedColumns": [],
   "writeComputedColumnsInOutput": false,
+  "mode": "RANGE",
   "centileTDigest": false,
   "valueSplits": [],
-  "rangeSplits": [],
+  "rangeSplits": [
+    {
+      "filter": {
+        "uiData": {
+          "mode": "\u0026\u0026",
+          "conditions": [
+            {
+              "input": "customer_id",
+              "num": 0,
+              "operator": "\u003e\u003d [number]"
+            },
+            {
+              "input": "customer_id",
+              "num": 8000,
+              "operator": "\u003c  [number]"
+            }
+          ]
+        }
+      },
+      "outputIndex": 0
+    }
+  ],
   "engineParams": {
     "hive": {
       "skipPrerunValidate": false,
@@ -70,6 +93,120 @@
               "operator": "\u003c\u003d [number]"
             }
           ]
+        },
+        "$status": {
+          "schema": {
+            "columns": [
+              {
+                "name": "customer_id",
+                "type": "bigint"
+              },
+              {
+                "name": "signup_date",
+                "type": "dateonly"
+              },
+              {
+                "name": "signup_month",
+                "type": "bigint"
+              },
+              {
+                "name": "signup_year",
+                "type": "bigint"
+              },
+              {
+                "name": "region",
+                "type": "string"
+              },
+              {
+                "name": "region_apac",
+                "type": "bigint"
+              },
+              {
+                "name": "region_eu",
+                "type": "bigint"
+              },
+              {
+                "name": "region_na",
+                "type": "bigint"
+              },
+              {
+                "name": "plan",
+                "type": "string"
+              },
+              {
+                "name": "is_subscription",
+                "type": "bigint"
+              },
+              {
+                "name": "age",
+                "type": "bigint"
+              },
+              {
+                "name": "age_bucket",
+                "type": "string"
+              },
+              {
+                "name": "tenure_months",
+                "type": "bigint"
+              },
+              {
+                "name": "tenure_bucket",
+                "type": "string"
+              },
+              {
+                "name": "total_spend_usd",
+                "type": "double"
+              },
+              {
+                "name": "spend_per_tenure_month",
+                "type": "double"
+              },
+              {
+                "name": "log_total_spend_usd",
+                "type": "double"
+              },
+              {
+                "name": "last_purchase_days_ago",
+                "type": "bigint"
+              },
+              {
+                "name": "recency_bucket",
+                "type": "string"
+              },
+              {
+                "name": "support_tickets_last_year",
+                "type": "bigint"
+              },
+              {
+                "name": "returned_items_last_year",
+                "type": "bigint"
+              },
+              {
+                "name": "high_returns",
+                "type": "bigint"
+              },
+              {
+                "name": "tickets_per_return",
+                "type": "double"
+              },
+              {
+                "name": "returns_rate",
+                "type": "double"
+              },
+              {
+                "name": "marketing_email_open_rate",
+                "type": "double"
+              },
+              {
+                "name": "low_open_rate",
+                "type": "bigint"
+              },
+              {
+                "name": "churned_30d",
+                "type": "bigint"
+              }
+            ]
+          }
         },
         "distinct": false,
         "enabled": true
