@@ -31,7 +31,16 @@
   "columnOrder": [],
   "columnUseScientificNotationByName": {},
   "exploreUIParams": {},
-  "steps": [],
+  "steps": [
+    {
+      "metaType": "PROCESSOR",
+      "type": "FilterOnCustomFormula",
+      "params": {
+        "expression": "mod(abs(hash(toString(customer_id))), 100) \u003c 80",
+        "action": "KEEP_ROW"
+      }
+    }
+  ],
   "maxProcessedMemTableBytes": -1,
   "previewMode": "ALL_ROWS",
   "vizSampling": {
