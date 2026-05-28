@@ -1,54 +1,22 @@
 {
   "centileShuffle": false,
-  "centileSplits": [
-    {
-      "outputIndex": 0,
-      "share": 50.0
-    }
-  ],
+  "centileSplits": [],
   "defaultOutputIndex": 1,
   "preFilter": {
     "distinct": false,
     "enabled": false
   },
-  "seed": 1337,
+  "seed": 42,
   "randomColumns": [],
   "centileOrders": [],
   "rangeSetTime": false,
-  "randomSplits": [
-    {
-      "outputIndex": 0,
-      "share": 50.0
-    }
-  ],
-  "randomColumnsSplits": [
-    {
-      "outputIndex": 0,
-      "share": 50.0
-    }
-  ],
+  "randomSplits": [],
+  "randomColumnsSplits": [],
   "computedColumns": [],
   "writeComputedColumnsInOutput": false,
   "centileTDigest": false,
-  "valueSplits": [
-    {
-      "outputIndex": 0,
-      "caseSensitive": false
-    }
-  ],
-  "rangeSplits": [
-    {
-      "filter": {
-        "uiData": {
-          "mode": "\u0026\u0026",
-          "conditions": []
-        },
-        "distinct": false,
-        "enabled": true
-      },
-      "outputIndex": 0
-    }
-  ],
+  "valueSplits": [],
+  "rangeSplits": [],
   "engineParams": {
     "hive": {
       "skipPrerunValidate": false,
@@ -95,7 +63,13 @@
       "filter": {
         "uiData": {
           "mode": "\u0026\u0026",
-          "conditions": []
+          "conditions": [
+            {
+              "input": "customer_id",
+              "num": 8000,
+              "operator": "\u003c\u003d [number]"
+            }
+          ]
         },
         "distinct": false,
         "enabled": true
