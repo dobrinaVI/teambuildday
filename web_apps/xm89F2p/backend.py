@@ -3,44 +3,18 @@ import json
 import pandas as pd
 import streamlit as st
 
+try:
+    import dataiku  # Available in DSS
+except Exception:  # pragma: no cover
+    dataiku = None
+
+
 st.set_page_config(page_title="Churn Risk Explorer", layout="wide")
 
 st.title("Churn Risk Explorer")
-st.caption("Predict churn risk and explain top drivers (no API calls).")
+st.caption("Predict churn risk and explain top drivers.")
 
-EXPECTED_COLUMNS = [
-    "customer_id",
-    "signup_date",
-    "signup_month",
-    "signup_year",
-    "region",
-    "region_apac",
-    "region_eu",
-    "region_na",
-    "plan",
-    "is_subscription",
-    "age",
-    "age_bucket",
-    "tenure_months",
-    "tenure_bucket",
-    "total_spend_usd",
-    "spend_per_tenure_month",
-    "log_total_spend_usd",
-    "last_purchase_days_ago",
-    "recency_bucket",
-    "support_tickets_last_year",
-    "returned_items_last_year",
-    "high_returns",
-    "tickets_per_return",
-    "returns_rate",
-    "marketing_email_open_rate",
-    "low_open_rate",
-    "churned_30d",
-    "proba_0",
-    "proba_1",
-    "prediction",
-    "explanations",
-]
+DEFAULT_DATAIKU_DATASET = "customer_churn_scored"
 
 
 def parse_explanations(value):
@@ -65,55 +39,28 @@ def top_k_explanations(expl: dict, k: int = 3):
     return items[:k]
 
 
-@st.cache_data(show_spinner=False)
-def load_csv(uploaded_file, separator: str, has_header: bool) -> pd.DataFrame:
-    header = 0 if has_header else None
-    df = pd.read_csv(uploaded_file, sep=separator, header=header, compression="infer")
-    if not has_header and df.shape[1] == len(EXPECTED_COLUMNS):
-        df.columns = EXPECTED_COLUMNS
-    return df
-
-
-def example_dataset(n: int = 1000) -> pd.DataFrame:
-    rows = []
-    for i in range(1, n + 1):
-        proba = (i % 100) / 100
-        expl = {
-            "returned_items_last_year": (proba - 0.5) * 0.9,
-            "marketing_email_open_rate": (0.5 - proba) * 0.7,
-            "last_purchase_days_ago": (proba - 0.4) * 0.5,
-        }
-        rows.append(
-            {
-                "customer_id": i,
-                "proba_1": proba,
-                "region": ["NA", "EU", "APAC"][i % 3],
-                "plan": ["subscription", "one-time"][i % 2],
-                "tenure_months": (i % 60) + 1,
-                "explanations": json.dumps(expl),
-            }
-        )
-    return pd.DataFrame(rows)
-
-
 with st.sidebar:
-    st.header("Data")
-    uploaded = st.file_uploader("Upload scored file", type=["csv", "tsv", "gz"])
-    separator = st.text_input("Separator", value="\\t", help="Use \\t for tab-separated files.")
-    has_header = st.toggle("File has header row", value=True)
-    st.caption(
-        "Expected columns include `customer_id`, `proba_1`, and `explanations` (JSON per row). "
-        "If your file has no header, this app auto-assigns known column names when the column count matches."
-    )
-    use_example = st.toggle("Use example data", value=uploaded is None)
+    st.header("Dataset")
+    st.caption("Reads directly from the Flow dataset:")
+    st.code(DEFAULT_DATAIKU_DATASET)
 
-if use_example:
-    scored_df = example_dataset(1000)
-else:
-    if uploaded is None:
-        st.info("Upload a scored CSV to begin, or enable example data.")
-        st.stop()
-    scored_df = load_csv(uploaded, separator=separator.encode("utf-8").decode("unicode_escape"), has_header=has_header)
+
+@st.cache_data(show_spinner=False)
+def load_dataiku_dataset(name: str) -> pd.DataFrame:
+    if dataiku is None:
+        raise RuntimeError("This app is not running inside Dataiku DSS.")
+    return dataiku.Dataset(name).get_dataframe()
+
+
+if dataiku is None:
+    st.error("This webapp must run inside Dataiku DSS (missing `dataiku` module).")
+    st.stop()
+
+try:
+    scored_df = load_dataiku_dataset(DEFAULT_DATAIKU_DATASET)
+except Exception as e:
+    st.error(f"Failed to read dataset `{DEFAULT_DATAIKU_DATASET}`: {e}")
+    st.stop()
 
 with st.sidebar:
     st.divider()
