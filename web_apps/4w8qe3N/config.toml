@@ -1,0 +1,35 @@
+# This is the configuration of your streamlit application. Optionally edit this file to take advantage
+# of streamlit's behavioral and visual controls.
+# Please Refer to https://docs.streamlit.io/develop/api-reference/configuration/config.toml
+# for documentation on available options
+#
+# IMPORTANT: Some behaviors are controlled by Dataiku and cannot be configured here. Setting options
+# in "browser" and "secrets" sections. Additionally, the following server options are controlled by dataiku
+# and cannot be overwritten:
+#    address, port, headless, runOnSave, fileWatcherType, baseUrlPath, folderWatchList, cookieSecret,
+#    enableStaticServing,
+
+[client]
+
+[global]
+
+[logger]
+
+[runner]
+
+[server]
+# enableCORS enables support for Cross-Origin Resource Sharing (CORS) protection, for added security.
+# If you decide to enable CORS, set corsAllowedOrigins to a list of allowed origins that the application
+# backend will accept traffic from, including your DSS installation's domain
+#
+# enableXsrfProtection enables support for Cross-Site Request Forgery (XSRF) protection.
+# Enabling XSRF protection also enables CORS protection, so it should only be enabled if CORS-allowed origins
+# are defined.
+enableCORS = false
+# corsAllowedOrigins = []
+enableXsrfProtection = false
+
+[theme]
+
+[theme.sidebar]
+
