@@ -119,6 +119,14 @@
         "expression": "if(tenure_months \u003c\u003d 2, \"0-2\", if(tenure_months \u003c\u003d 6, \"3-6\", if(tenure_months \u003c\u003d 12, \"7-12\", if(tenure_months \u003c\u003d 24, \"13-24\", if(tenure_months \u003c\u003d 60, \"25-60\", \"60+\")))))",
         "column": "tenure_bucket"
       }
+    },
+    {
+      "metaType": "PROCESSOR",
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "if(age \u003c\u003d 24, \"16-24\", if(age \u003c\u003d 34, \"25-34\", if(age \u003c\u003d 44, \"35-44\", if(age \u003c\u003d 54, \"45-54\", \"55-80\"))))",
+        "column": "age_bucket"
+      }
     }
   ],
   "maxProcessedMemTableBytes": -1,
