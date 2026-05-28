@@ -5,7 +5,6 @@
 .dss-meta
 .git
 *.pyc
-__pycache__/
 .coverage
 .htmlcov
 .DS_Store
