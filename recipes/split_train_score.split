@@ -11,14 +11,14 @@
     "distinct": false,
     "enabled": false
   },
-  "seed": 1337,
+  "seed": 42,
   "randomColumns": [],
   "centileOrders": [],
   "rangeSetTime": false,
   "randomSplits": [
     {
       "outputIndex": 0,
-      "share": 50.0
+      "share": 80.0
     }
   ],
   "randomColumnsSplits": [
