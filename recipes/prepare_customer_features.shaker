@@ -103,6 +103,14 @@
         "expression": "if(returned_items_last_year \u003e\u003d 3, 1, 0)",
         "column": "high_returns"
       }
+    },
+    {
+      "metaType": "PROCESSOR",
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "if(last_purchase_days_ago \u003c\u003d 30, \"0-30\", if(last_purchase_days_ago \u003c\u003d 90, \"31-90\", if(last_purchase_days_ago \u003c\u003d 180, \"91-180\", \"181-365\")))",
+        "column": "recency_bucket"
+      }
     }
   ],
   "maxProcessedMemTableBytes": -1,
