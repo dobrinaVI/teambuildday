@@ -9,7 +9,7 @@
     },
     "infra": {
       "containerSelection": {
-        "containerMode": "INHERIT"
+        "containerMode": "NONE"
       },
       "overrideGlobalK8sExposition": false,
       "exposition": {
@@ -36,7 +36,7 @@
         "config": {}
       }
     },
-    "forceAuthentication": true
+    "forceAuthentication": false
   },
   "config": {},
   "name": "Churn Risk Explorer",
