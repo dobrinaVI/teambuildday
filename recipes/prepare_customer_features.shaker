@@ -95,6 +95,14 @@
         "expression": "if(marketing_email_open_rate \u003c 0.12, 1, 0)",
         "column": "low_open_rate"
       }
+    },
+    {
+      "metaType": "PROCESSOR",
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "if(returned_items_last_year \u003e\u003d 3, 1, 0)",
+        "column": "high_returns"
+      }
     }
   ],
   "maxProcessedMemTableBytes": -1,
