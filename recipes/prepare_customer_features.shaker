@@ -111,6 +111,14 @@
         "expression": "if(last_purchase_days_ago \u003c\u003d 30, \"0-30\", if(last_purchase_days_ago \u003c\u003d 90, \"31-90\", if(last_purchase_days_ago \u003c\u003d 180, \"91-180\", \"181-365\")))",
         "column": "recency_bucket"
       }
+    },
+    {
+      "metaType": "PROCESSOR",
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "if(tenure_months \u003c\u003d 2, \"0-2\", if(tenure_months \u003c\u003d 6, \"3-6\", if(tenure_months \u003c\u003d 12, \"7-12\", if(tenure_months \u003c\u003d 24, \"13-24\", if(tenure_months \u003c\u003d 60, \"25-60\", \"60+\")))))",
+        "column": "tenure_bucket"
+      }
     }
   ],
   "maxProcessedMemTableBytes": -1,
