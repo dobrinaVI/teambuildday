@@ -127,6 +127,14 @@
         "expression": "if(age \u003c\u003d 24, \"16-24\", if(age \u003c\u003d 34, \"25-34\", if(age \u003c\u003d 44, \"35-44\", if(age \u003c\u003d 54, \"45-54\", \"55-80\"))))",
         "column": "age_bucket"
       }
+    },
+    {
+      "metaType": "PROCESSOR",
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "if(region\u003d\u003d\"NA\",1,0)",
+        "column": "region_na"
+      }
     }
   ],
   "maxProcessedMemTableBytes": -1,
