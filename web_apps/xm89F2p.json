@@ -2,7 +2,7 @@
   "type": "STREAMLIT",
   "hasLegacyBackendURL": false,
   "params": {
-    "autoStartBackend": false,
+    "autoStartBackend": true,
     "envSelection": {
       "envMode": "INHERIT"
     },
@@ -35,7 +35,7 @@
         "config": {}
       }
     },
-    "forceAuthentication": false
+    "forceAuthentication": true
   },
   "config": {},
   "name": "Churn Risk Explorer",
