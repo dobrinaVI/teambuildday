@@ -9,7 +9,7 @@
     },
     "infra": {
       "containerSelection": {
-        "containerMode": "NONE"
+        "containerMode": "INHERIT"
       },
       "overrideGlobalK8sExposition": false,
       "exposition": {
