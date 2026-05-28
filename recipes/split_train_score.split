@@ -1,11 +1,6 @@
 {
   "centileShuffle": false,
-  "centileSplits": [
-    {
-      "outputIndex": 0,
-      "share": 50.0
-    }
-  ],
+  "centileSplits": [],
   "defaultOutputIndex": 1,
   "preFilter": {
     "distinct": false,
@@ -15,40 +10,13 @@
   "randomColumns": [],
   "centileOrders": [],
   "rangeSetTime": false,
-  "randomSplits": [
-    {
-      "outputIndex": 0,
-      "share": 80.0
-    }
-  ],
-  "randomColumnsSplits": [
-    {
-      "outputIndex": 0,
-      "share": 50.0
-    }
-  ],
+  "randomSplits": [],
+  "randomColumnsSplits": [],
   "computedColumns": [],
   "writeComputedColumnsInOutput": false,
   "centileTDigest": false,
-  "valueSplits": [
-    {
-      "outputIndex": 0,
-      "caseSensitive": false
-    }
-  ],
-  "rangeSplits": [
-    {
-      "filter": {
-        "uiData": {
-          "mode": "\u0026\u0026",
-          "conditions": []
-        },
-        "distinct": false,
-        "enabled": true
-      },
-      "outputIndex": 0
-    }
-  ],
+  "valueSplits": [],
+  "rangeSplits": [],
   "engineParams": {
     "hive": {
       "skipPrerunValidate": false,
@@ -97,6 +65,7 @@
           "mode": "\u0026\u0026",
           "conditions": []
         },
+        "expression": "mod(abs(hash(toString(customer_id))), 100) \u003c 80",
         "distinct": false,
         "enabled": true
       },
