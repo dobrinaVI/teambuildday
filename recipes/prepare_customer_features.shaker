@@ -79,6 +79,14 @@
         "expression": "returned_items_last_year / (1 + (total_spend_usd / 250.0))",
         "column": "returns_rate"
       }
+    },
+    {
+      "metaType": "PROCESSOR",
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "support_tickets_last_year / max(1, returned_items_last_year)",
+        "column": "tickets_per_return"
+      }
     }
   ],
   "maxProcessedMemTableBytes": -1,
