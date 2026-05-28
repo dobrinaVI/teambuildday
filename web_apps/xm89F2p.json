@@ -4,7 +4,8 @@
   "params": {
     "autoStartBackend": true,
     "envSelection": {
-      "envMode": "INHERIT"
+      "envMode": "EXPLICIT_ENV",
+      "envName": "streamlit-dev"
     },
     "infra": {
       "containerSelection": {
