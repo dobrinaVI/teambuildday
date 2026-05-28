@@ -116,7 +116,8 @@
       {"name":"churned_30d","type":"bigint"},
       {"name":"proba_0","type":"double"},
       {"name":"proba_1","type":"double"},
-      {"name":"prediction","type":"string"}
+      {"name":"prediction","type":"string"},
+      {"name":"explanations","type":"string"}
     ],
     "userModified": true
   },
