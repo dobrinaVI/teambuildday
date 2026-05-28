@@ -86,7 +86,20 @@
     }
   },
   "schema": {
-    "columns": [],
+    "columns": [
+      {"name":"customer_id","type":"bigint"},
+      {"name":"signup_date","type":"dateonly"},
+      {"name":"region","type":"string"},
+      {"name":"plan","type":"string"},
+      {"name":"age","type":"bigint"},
+      {"name":"tenure_months","type":"bigint"},
+      {"name":"total_spend_usd","type":"double"},
+      {"name":"last_purchase_days_ago","type":"bigint"},
+      {"name":"support_tickets_last_year","type":"bigint"},
+      {"name":"returned_items_last_year","type":"bigint"},
+      {"name":"marketing_email_open_rate","type":"double"},
+      {"name":"churned_30d","type":"bigint"}
+    ],
     "userModified": true
   },
   "typeSystemVersion": "V2",
