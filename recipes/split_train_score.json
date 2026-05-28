@@ -25,6 +25,10 @@
         {
           "ref": "customer_features_train",
           "appendMode": false
+        },
+        {
+          "ref": "customer_features_score",
+          "appendMode": false
         }
       ]
     }
