@@ -87,6 +87,14 @@
         "expression": "support_tickets_last_year / max(1, returned_items_last_year)",
         "column": "tickets_per_return"
       }
+    },
+    {
+      "metaType": "PROCESSOR",
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "if(marketing_email_open_rate \u003c 0.12, 1, 0)",
+        "column": "low_open_rate"
+      }
     }
   ],
   "maxProcessedMemTableBytes": -1,
