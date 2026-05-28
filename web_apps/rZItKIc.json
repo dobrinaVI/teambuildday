@@ -4,7 +4,7 @@
   "params": {
     "backendEnabled": false,
     "enableJavascriptModules": false,
-    "autoStartBackend": false,
+    "autoStartBackend": true,
     "hideJSSecurityPanel": false,
     "hideWebAppConfig": false,
     "envSelection": {
