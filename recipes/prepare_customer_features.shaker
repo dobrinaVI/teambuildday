@@ -39,6 +39,14 @@
         "expression": "if(plan\u003d\u003d\"subscription\",1,0)",
         "column": "is_subscription"
       }
+    },
+    {
+      "metaType": "PROCESSOR",
+      "type": "CreateColumnWithGREL",
+      "params": {
+        "expression": "datePart(signup_date,\"years\")",
+        "column": "signup_year"
+      }
     }
   ],
   "maxProcessedMemTableBytes": -1,
